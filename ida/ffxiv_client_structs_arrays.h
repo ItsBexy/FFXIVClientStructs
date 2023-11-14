@@ -860,6 +860,10 @@ struct Component::GUI::AtkComponentDragDrop;
 struct Component::GUI::AtkDragDropInterface;
 struct Component::GUI::AtkComponentDropDownList;
 struct Component::GUI::AtkComponentGaugeBar;
+struct Component::GUI::AtkComponentGaugeBar::GaugeFillNineGrids;
+struct Component::GUI::AtkComponentGaugeBar::GaugeValue;
+struct Component::GUI::AtkComponentGaugeBar::GaugeValueTransition;
+struct Component::GUI::AtkComponentGaugeBar::GaugeValueTransitionData;
 struct Component::GUI::AtkComponentGuildLeveCard;
 struct Component::GUI::AtkComponentHoldButton;
 struct Component::GUI::AtkComponentIcon;
@@ -15514,10 +15518,56 @@ struct Component::GUI::AtkComponentDropDownList /* Size=0xE0 */
     /*      */ byte _gap_0xDC[0x4];
 };
 
+struct Component::GUI::AtkComponentGaugeBar::GaugeFillNineGrids /* Size=0x18 */
+{
+    /* 0x00 */ Component::GUI::AtkNineGridNode* Main;
+    /* 0x08 */ Component::GUI::AtkNineGridNode* Increase;
+    /* 0x10 */ Component::GUI::AtkNineGridNode* Decrease;
+};
+
 struct Component::GUI::AtkComponentGaugeBar /* Size=0x1A8 */
 {
     /* 0x000 */ Component::GUI::AtkComponentBase AtkComponentBase;
-    /*       */ byte _gap_0xC0[0xE8];
+    /* 0x0C0 */ byte TransitionData[0x40];
+    /* 0x100 */ byte Values[0x20];
+    /* 0x120 */ Component::GUI::AtkImageNode* BackdropImageNode;
+    /* 0x128 */ Component::GUI::AtkComponentGaugeBar::GaugeFillNineGrids GaugeFill;
+    /* 0x140 */ Component::GUI::AtkComponentGaugeBar::GaugeFillNineGrids SecondaryGaugeFill;
+    /* 0x158 */ Component::GUI::AtkComponentGaugeBar::GaugeFillNineGrids SecondaryGaugeOverflow;
+    /* 0x170 */ Component::GUI::AtkImageNode* SecondaryGaugeOverflowMaxIcon;
+    /* 0x178 */ Component::GUI::AtkResNode* Node178;
+    /* 0x180 */ Component::GUI::AtkNineGridNode* BorderNineGridNode;
+    /* 0x188 */ Component::GUI::AtkTextNode* ValueTextNode;
+    /* 0x190 */ __int32 MinValue;
+    /* 0x194 */ __int32 MaxValue;
+    /* 0x198 */ __int32 Unk198;
+    /* 0x19C */ __int16 Unk19C;
+    /* 0x19E */ __int16 Unk19E;
+    /* 0x1A0 */ __int16 MarginH;
+    /* 0x1A2 */ __int16 FillMaxPosition;
+    /*       */ byte _gap_0x1A4[0x4];
+};
+
+struct Component::GUI::AtkComponentGaugeBar::GaugeValue /* Size=0x10 */
+{
+    /* 0x00 */ __int32 ValueInt;
+    /* 0x04 */ float ValueFloatLaggingIncrease;
+    /* 0x08 */ float ValueFloatActual;
+    /* 0x0C */ float ValueFloatLaggingDecrease;
+};
+
+struct Component::GUI::AtkComponentGaugeBar::GaugeValueTransition /* Size=0x10 */
+{
+    /* 0x00 */ __int32 StartValue;
+    /* 0x04 */ __int32 EndValue;
+    /* 0x08 */ float Progress;
+    /* 0x0C */ float TransitionLength;
+};
+
+struct Component::GUI::AtkComponentGaugeBar::GaugeValueTransitionData /* Size=0x20 */
+{
+    /* 0x00 */ Component::GUI::AtkComponentGaugeBar::GaugeValueTransition Increase;
+    /* 0x10 */ Component::GUI::AtkComponentGaugeBar::GaugeValueTransition Decrease;
 };
 
 struct Component::GUI::AtkComponentGuildLeveCard /* Size=0xF0 */
@@ -15728,7 +15778,10 @@ struct Component::GUI::AtkComponentTextInput /* Size=0x600 */
 struct Component::GUI::AtkComponentTextNineGrid /* Size=0xD8 */
 {
     /* 0x00 */ Component::GUI::AtkComponentBase AtkComponentBase;
-    /*      */ byte _gap_0xC0[0x18];
+    /* 0xC0 */ Component::GUI::AtkTextNode* AtkTextNode;
+    /* 0xC8 */ Component::GUI::AtkResNode* OwnerNode;
+    /* 0xD0 */ float OwnerX;
+    /* 0xD4 */ __int32 Flags;
 };
 
 struct Pointer::ComponentGUIAtkComponentTreeListItem /* Size=0x8 */

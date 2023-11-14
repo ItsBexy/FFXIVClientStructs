@@ -3670,10 +3670,28 @@ classes:
       0x14056E710: ctor
   Component::GUI::AtkComponentGaugeBar:
     vtbls:
-      - ea: 0x141A08228
+      - ea: 0x141A07258
         base: Component::GUI::AtkComponentBase
     funcs:
-      0x14056F640: ctor
+    #  0x14056F200: SetMinValue
+    #  0x14056F240: SetMaxValue
+    #  0x14056F280: SetGaugeValue
+       0x14056F5E0: ctor
+   #   0x14056FFD0: UpdateFloatValues
+    #  0x140570150: UpdateBarFill1
+   #   0x140570500: UpdateBarFill2
+    #  0x140570C70: SetupGaugeTransitionSplit # handles situations where the value overflows to/from the secondary gauge (ie shield bar in party list)
+   #   0x1405710D0: SetupGaugeTransition
+   #   0x140571220: SetGaugeValueInstant # no transition animation
+   #   0x140571330: SetGaugeNumberText
+   #   0x140571410: GetFillPosition1
+   #   0x1405714B0: GetFillPosition2
+   #   0x140571530: InitializeFillMargin
+    vfuncs:
+      8: InitializeFillNodes
+ # Component::GUI::AtkComponentGaugeBar::GaugeValueTransition:
+   # funcs:
+  #    0x14056FE20: GetTransitioningValue
   Component::GUI::AtkComponentSlider:
     vtbls:
       - ea: 0x141A082C8
@@ -3735,6 +3753,10 @@ classes:
         base: Component::GUI::AtkComponentBase
     funcs:
       0x14057EF20: ctor
+  #    0x14057F140: SetText
+   #   0x14057F180: SetNumber
+   #   0x14057F1D0: UpdateX
+   #   0x14057F230: UpdateDimensions
   Component::GUI::AtkResourceRendererBase:
     vtbls:
       - ea: 0x141A089D0
